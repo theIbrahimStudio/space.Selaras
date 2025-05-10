@@ -1,68 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Syne:wght@400..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap");
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --font-brand: "Zen Dots", sans-serif;
+  --font-display: "Syne", sans-serif;
+  --font-text: "Inter", sans-serif;
+  --font-mono: "Fira Code", monospace;
+  --font-tab: "Instrument Sans", sans-serif;
+  /* button color global */
+  --theme-font: "Inter", sans-serif;
+  --theme-color-base: var(--color-background);
+  --theme-color-primary: var(--color-primary);
+  --theme-color-secondary: var(--color-secondary);
+  font-size: 16px;
+}
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+[data-theme="dark"] {
+  --color-primary: #996738;
+  --color-primary-5: rgba(153, 103, 56, 0.05);
+  --color-primary-10: rgba(153, 103, 56, 0.1);
+  --color-primary-20: rgba(153, 103, 56, 0.2);
+  --color-primary-30: rgba(153, 103, 56, 0.3);
+  --color-primary-40: rgba(153, 103, 56, 0.4);
+  --color-primary-50: rgba(153, 103, 56, 0.5);
+  --color-secondary: #363435;
+  --color-secondary-5: rgba(54, 52, 53, 0.05);
+  --color-secondary-10: rgba(54, 52, 53, 0.1);
+  --color-secondary-20: rgba(54, 52, 53, 0.2);
+  --color-secondary-30: rgba(54, 52, 53, 0.3);
+  --color-secondary-40: rgba(54, 52, 53, 0.4);
+  --color-secondary-50: rgba(54, 52, 53, 0.5);
+  --color-background: #fffffc;
+  --color-background-5: rgba(255, 255, 252, 0.05);
+  --color-background-10: rgba(255, 255, 252, 0.1);
+  --color-background-20: rgba(255, 255, 252, 0.2);
+  --color-background-30: rgba(255, 255, 252, 0.3);
+  --color-background-40: rgba(255, 255, 252, 0.4);
+  --color-background-50: rgba(255, 255, 252, 0.5);
+  --color-background-85: rgba(255, 255, 252, 0.85);
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* [data-theme="dark"] {
+  --color-primary: #d4a373;
+  --color-primary-5: rgba(212, 163, 115, 0.05);
+  --color-primary-10: rgba(212, 163, 115, 0.1);
+  --color-primary-20: rgba(212, 163, 115, 0.2);
+  --color-primary-30: rgba(212, 163, 115, 0.3);
+  --color-primary-40: rgba(212, 163, 115, 0.4);
+  --color-primary-50: rgba(212, 163, 115, 0.5);
+  --color-secondary: #d6d4d5;
+  --color-secondary-5: rgba(214, 212, 213, 0.05);
+  --color-secondary-10: rgba(214, 212, 213, 0.1);
+  --color-secondary-20: rgba(214, 212, 213, 0.2);
+  --color-secondary-30: rgba(214, 212, 213, 0.3);
+  --color-secondary-40: rgba(214, 212, 213, 0.4);
+  --color-secondary-50: rgba(214, 212, 213, 0.5);
+  --color-background: #121212;
+  --color-background-5: rgba(18, 18, 18, 0.05);
+  --color-background-10: rgba(18, 18, 18, 0.1);
+  --color-background-20: rgba(18, 18, 18, 0.2);
+  --color-background-30: rgba(18, 18, 18, 0.3);
+  --color-background-40: rgba(18, 18, 18, 0.4);
+  --color-background-50: rgba(18, 18, 18, 0.5);
+  --color-background-85: rgba(18, 18, 18, 0.85);
+} */
+
+[data-theme="light"] {
+  --color-primary: #996738;
+  --color-primary-5: rgba(153, 103, 56, 0.05);
+  --color-primary-10: rgba(153, 103, 56, 0.1);
+  --color-primary-20: rgba(153, 103, 56, 0.2);
+  --color-primary-30: rgba(153, 103, 56, 0.3);
+  --color-primary-40: rgba(153, 103, 56, 0.4);
+  --color-primary-50: rgba(153, 103, 56, 0.5);
+  --color-secondary: #363435;
+  --color-secondary-5: rgba(54, 52, 53, 0.05);
+  --color-secondary-10: rgba(54, 52, 53, 0.1);
+  --color-secondary-20: rgba(54, 52, 53, 0.2);
+  --color-secondary-30: rgba(54, 52, 53, 0.3);
+  --color-secondary-40: rgba(54, 52, 53, 0.4);
+  --color-secondary-50: rgba(54, 52, 53, 0.5);
+  --color-background: #fffffc;
+  --color-background-5: rgba(255, 255, 252, 0.05);
+  --color-background-10: rgba(255, 255, 252, 0.1);
+  --color-background-20: rgba(255, 255, 252, 0.2);
+  --color-background-30: rgba(255, 255, 252, 0.3);
+  --color-background-40: rgba(255, 255, 252, 0.4);
+  --color-background-50: rgba(255, 255, 252, 0.5);
+  --color-background-85: rgba(255, 255, 252, 0.85);
+}
+
+@media (min-width: 701px) and (max-width: 1120px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    font-size: 11.5px;
+  }
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  color: var(--color-primary);
 }
-a:hover {
-  color: #535bf2;
+
+img {
+  object-fit: cover;
+  object-position: center;
+  color: transparent;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }

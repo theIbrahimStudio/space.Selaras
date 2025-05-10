@@ -1,0 +1,22 @@
+.section.glass {
+  /* border: 0.125rem solid var(--color-secondary-5); */
+  /* box-shadow: rgba(0, 0, 0, 0.1) 0 0.6rem 0.9rem -0.2rem, rgba(0, 0, 0, 0.05) 0 0.2rem 0.4rem -0.1rem; */
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease-in-out;
+}
+
+.section::-webkit-scrollbar,
+.section.glass::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+.section::-webkit-scrollbar-track,
+.section.glass::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.section::-webkit-scrollbar-thumb,
+.section.glass::-webkit-scrollbar-thumb {
+  background-color: var(--color-secondary-20);
+  border-radius: 0.3rem;
+}
