@@ -8,7 +8,7 @@ const SEO = ({ title, description, route, thumbSrc, extThumbSrc, thumbAlt = "", 
   const metatitle = `${title} | ${company}`;
   const stripdesc = (description && stripHtml(description).substring(0, 160)) || "Platform Informasi Terkini dan Teraktual, Kanal Aspirasi Netizen, dan Digital Market";
   const thumbnail = extThumbSrc ? extThumbSrc : thumbSrc ? `${domain}${thumbSrc}` : `${domain}/capture-wide.png`;
-  const markers = import.meta.env.REACT_APP_MARKERS;
+  const markers = import.meta.env.ISS_MARKERS;
   const pubdate = formatToISO8601(datecreate);
   const moddate = formatToISO8601(dateupdate);
 

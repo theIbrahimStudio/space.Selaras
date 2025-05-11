@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from "react";
 
 const ApiContext = createContext();
-const apiURL = import.meta.env.REACT_APP_API_URL;
+const apiURL = import.meta.env.API_URL;
 
 export const ApiProvider = ({ children }) => {
   const iGETit = async (token, route) => {
