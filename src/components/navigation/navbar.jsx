@@ -21,7 +21,11 @@ const Navbar = ({ id = "" }) => {
         <Button.Tab>Project</Button.Tab>
         <Button.Tab>Blog</Button.Tab>
       </El.Section>
-      <El.Img src={logo} style={{ width: "9.4rem", height: "auto" }} />
+      <El.Section sWidth="9.4rem" alignItems="flex-end">
+        <Button.Primary variant="line" size="small">
+          Contact Us
+        </Button.Primary>
+      </El.Section>
     </El.Section>
   );
 };

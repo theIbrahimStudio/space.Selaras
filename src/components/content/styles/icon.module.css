@@ -1,0 +1,25 @@
+.isIcon {
+  width: 1.2rem;
+  height: 1.2rem;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  color: inherit;
+  transition: transform 0.3s ease-in-out;
+}
+
+.isIcon.flipped {
+  transform: scaleY(-1);
+}
+
+.isIcon svg {
+  transition: transform 0.3s ease-in-out;
+}
+
+.isIcon.rotate svg {
+  transform: rotate(-45deg);
+}

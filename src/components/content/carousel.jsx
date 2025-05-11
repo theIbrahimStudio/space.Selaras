@@ -2,12 +2,13 @@ import React, { useRef, useEffect, useState, Children, cloneElement, Fragment } 
 import * as El from "../layout/el";
 import styles from "./styles/slideshow.module.css";
 
-export default function Slideshow({ delay = 3000, isAutoPlay = false, isArrowEnabled = false, isDotEnabled = false, children }) {
+const Carousel = ({ delay = 3000, isAutoPlay = false, isArrowEnabled = false, isDotEnabled = false, children }) => {
   const trackRef = useRef();
   const touchStartX = useRef(null);
 
   const [index, setIndex] = useState(1);
   const [transition, setTransition] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
 
   const childArray = Children.toArray(children);
   const total = childArray.length;
@@ -44,12 +45,12 @@ export default function Slideshow({ delay = 3000, isAutoPlay = false, isArrowEna
   }, [index, transition]);
 
   useEffect(() => {
-    if (!isAutoPlay) return;
+    if (!isAutoPlay || isPaused) return;
     const interval = setInterval(() => {
       setIndex((prev) => prev + 1);
     }, delay);
     return () => clearInterval(interval);
-  }, [isAutoPlay, delay]);
+  }, [isAutoPlay, isPaused, delay]);
 
   useEffect(() => {
     if (!transition) {
@@ -74,7 +75,7 @@ export default function Slideshow({ delay = 3000, isAutoPlay = false, isArrowEna
         {isDotEnabled && (
           <div className={styles.dots}>
             {childArray.map((_, i) => (
-              <div key={i} className={`${styles.dot} ${currentDot === i ? styles.active : ""}`} onClick={() => goToIndex(i)} />
+              <div key={i} className={`${styles.dot} ${currentDot === i ? styles.active : ""}`} onClick={() => goToIndex(i)} onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)} />
             ))}
           </div>
         )}
@@ -91,4 +92,6 @@ export default function Slideshow({ delay = 3000, isAutoPlay = false, isArrowEna
       )}
     </El.Section>
   );
-}
+};
+
+export default Carousel;
