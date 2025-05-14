@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as Icon from "../content/icons";
 import tabcss from "./styles/button-tab.module.css";
 import pricss from "./styles/button-primary.module.css";
+import mrecss from "./styles/button-more.module.css";
 
 export const Tab = ({ id = "", isActive = false, onClick = () => {}, children }) => {
   const compid = `${id}-tab-button`;
@@ -46,6 +47,16 @@ export const CTA = ({ id = "", onClick = () => {}, children }) => {
     <button id={compid} className={`${pricss.button} ${pricss.fill}`} style={basestyles} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onClick={onClick}>
       {children}
       <Icon.CtaArrow size="1.5rem" active={hovered} />
+    </button>
+  );
+};
+
+export const More = ({ id = "", children }) => {
+  const compid = `${id}-more-button`;
+
+  return (
+    <button id={compid} className={mrecss.button}>
+      {children}
     </button>
   );
 };

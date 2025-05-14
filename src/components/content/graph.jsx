@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
 const useGraph = () => {
-  const getGraph = (flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant, ellipsed, fontWeight, fontFamily, lineHeight = "normal", letterSpacing = "normal", color, textDecoration, textWrap, whiteSpace) => {
+  const getGraph = (flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant, ellipsed, lineClamp, fontWeight, fontFamily, lineHeight = "normal", letterSpacing = "normal", color, textDecoration, textWrap, whiteSpace) => {
     const fontSizes = {
       xlarge: "3.125rem",
       large: "2.1875rem",
@@ -47,6 +47,7 @@ const useGraph = () => {
     };
 
     const styles = {
+      display: ellipsed ? "-webkit-inline-box" : "inline",
       flex: flex || "unset",
       position: position || "relative",
       alignSelf: alignSelf || "unset",
@@ -69,18 +70,21 @@ const useGraph = () => {
       overflow: ellipsed ? "hidden" : "unset",
       textDecoration: textDecoration || "normal",
       textOverflow: ellipsed ? "ellipsis" : "unset",
-      textWrap: ellipsed ? "nowrap" : textWrap || "unset",
-      whiteSpace: ellipsed ? "nowrap" : whiteSpace || "unset",
+      lineClamp: ellipsed ? lineClamp : "unset",
+      webkitLineClamp: ellipsed ? lineClamp : "unset",
+      webkitBoxOrient: ellipsed ? "vertical" : "unset",
+      textWrap: textWrap || "unset",
+      whiteSpace: whiteSpace || "unset",
     };
 
     return styles;
   };
 
-  const H1 = ({ id = "", flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant = "xlarge", ellipsed = false, fontWeight = "bold", fontFamily = "display", lineHeight, letterSpacing, color, textDecoration, textWrap, whiteSpace, children }) => {
+  const H1 = ({ id = "", flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant = "xlarge", ellipsed = false, lineClamp, fontWeight = "bold", fontFamily = "display", lineHeight, letterSpacing, color, textDecoration, textWrap, whiteSpace, children }) => {
     const compid = `${id}-h1`;
 
     return (
-      <h1 id={compid} style={getGraph(flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant, ellipsed, fontWeight, fontFamily, lineHeight, letterSpacing, color, textDecoration, textWrap, whiteSpace)}>
+      <h1 id={compid} style={getGraph(flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant, ellipsed, lineClamp, fontWeight, fontFamily, lineHeight, letterSpacing, color, textDecoration, textWrap, whiteSpace)}>
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
             if (child.type === Fragment) {
@@ -102,11 +106,11 @@ const useGraph = () => {
     );
   };
 
-  const H2 = ({ id = "", flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant = "large", ellipsed = false, fontWeight = "bold", fontFamily = "display", lineHeight, letterSpacing, color, textDecoration, textWrap, whiteSpace, children }) => {
+  const H2 = ({ id = "", flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant = "large", ellipsed = false, lineClamp, fontWeight = "bold", fontFamily = "display", lineHeight, letterSpacing, color, textDecoration, textWrap, whiteSpace, children }) => {
     const compid = `${id}-h2`;
 
     return (
-      <h2 id={compid} style={getGraph(flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant, ellipsed, fontWeight, fontFamily, lineHeight, letterSpacing, color, textDecoration, textWrap, whiteSpace)}>
+      <h2 id={compid} style={getGraph(flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant, ellipsed, lineClamp, fontWeight, fontFamily, lineHeight, letterSpacing, color, textDecoration, textWrap, whiteSpace)}>
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
             if (child.type === Fragment) {
@@ -128,11 +132,11 @@ const useGraph = () => {
     );
   };
 
-  const H3 = ({ id = "", flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant = "medium", ellipsed = false, fontWeight = "semibold", fontFamily = "display", lineHeight, letterSpacing, color, textDecoration, textWrap, whiteSpace, children }) => {
+  const H3 = ({ id = "", flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant = "medium", ellipsed = false, lineClamp, fontWeight = "semibold", fontFamily = "display", lineHeight, letterSpacing, color, textDecoration, textWrap, whiteSpace, children }) => {
     const compid = `${id}-h3`;
 
     return (
-      <h3 id={compid} style={getGraph(flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant, ellipsed, fontWeight, fontFamily, lineHeight, letterSpacing, color, textDecoration, textWrap, whiteSpace)}>
+      <h3 id={compid} style={getGraph(flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant, ellipsed, lineClamp, fontWeight, fontFamily, lineHeight, letterSpacing, color, textDecoration, textWrap, whiteSpace)}>
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
             if (child.type === Fragment) {
@@ -154,21 +158,21 @@ const useGraph = () => {
     );
   };
 
-  const Span = ({ id = "", flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant = "small", ellipsed = false, fontWeight = "normal", fontFamily = "text", lineHeight, letterSpacing, color, textDecoration, textWrap, whiteSpace, children }) => {
+  const Span = ({ id = "", flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant = "small", ellipsed = false, lineClamp, fontWeight = "normal", fontFamily = "text", lineHeight, letterSpacing, color, textDecoration, textWrap, whiteSpace, children }) => {
     const compid = `${id}-span`;
 
     return (
-      <span id={compid} style={getGraph(flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant, ellipsed, fontWeight, fontFamily, lineHeight, letterSpacing, color, textDecoration, textWrap, whiteSpace)}>
+      <span id={compid} style={getGraph(flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant, ellipsed, lineClamp, fontWeight, fontFamily, lineHeight, letterSpacing, color, textDecoration, textWrap, whiteSpace)}>
         {children}
       </span>
     );
   };
 
-  const P = ({ id = "", flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant = "small", ellipsed = false, fontWeight = "normal", fontFamily = "text", lineHeight, letterSpacing, color, textDecoration, textWrap, whiteSpace, children }) => {
+  const P = ({ id = "", flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant = "small", ellipsed = false, lineClamp, fontWeight = "normal", fontFamily = "text", lineHeight, letterSpacing, color, textDecoration, textWrap, whiteSpace, children }) => {
     const compid = `${id}-paragraph`;
 
     return (
-      <p id={compid} style={getGraph(flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant, ellipsed, fontWeight, fontFamily, lineHeight, letterSpacing, color, textDecoration, textWrap, whiteSpace)}>
+      <p id={compid} style={getGraph(flex, position, alignSelf, opacity, width, minWidth, maxWidth, height, minHeight, maxHeight, margin, textAlign, variant, ellipsed, lineClamp, fontWeight, fontFamily, lineHeight, letterSpacing, color, textDecoration, textWrap, whiteSpace)}>
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
             if (child.type === Fragment) {

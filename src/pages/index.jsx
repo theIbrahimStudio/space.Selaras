@@ -10,11 +10,35 @@ import * as El from "../components/layout/el";
 import * as Card from "../components/content/cards";
 import * as Icon from "../components/content/icons";
 import * as Button from "../components/input/buttons";
-import img1 from "../assets/img/slideshow/1.jpg";
-import img2 from "../assets/img/slideshow/2.jpg";
-import img3 from "../assets/img/slideshow/3.jpg";
-import img4 from "../assets/img/slideshow/4.jpg";
+import slide1 from "../assets/img/slideshow/1.jpg";
+import slide2 from "../assets/img/slideshow/2.jpg";
+import slide3 from "../assets/img/slideshow/3.jpg";
+import slide4 from "../assets/img/slideshow/4.jpg";
+import proj1 from "../assets/img/project/1.jpg";
+import proj2 from "../assets/img/project/2.jpg";
+import proj3 from "../assets/img/project/3.jpg";
 import asideImg from "../assets/img/2148972401.jpg";
+
+const projectData = [
+  {
+    title: "Selaras Hills",
+    content:
+      "Located in the heart of Bandung City, Selaras Hills, the latest residential offering from Selaras Kontraktor, seamlessly blends lifestyle with comprehensive modern amenities, providing comfort, convenience, and security. Selaras Hills stands as a beacon of excellence and true luxury, just minutes away from Hang Nadim International Airport, Bandung Center International Ferry Terminal, various popular shopping centers, schools and universities, healthcare facilities, and traditional markets.\n\nWe are committed to making luxury and comfort easily accessible to our residents. Offering commercial and residential units, five exclusive clusters, a beautiful clubhouse, and the C-Walk culinary center, Selaras Hills is a truly integrated all-in-one lifestyle hub that caters to the unique needs and expectations of individuals and families. We value community, and we know you do too.",
+    image: proj1,
+  },
+  {
+    title: "The Selaras Sukajadi",
+    content:
+      "The Selaras Sukajadi is one of the elite residential projects developed by Selaras Kontraktor. This project is located in Bandung Center and is one of the most strategic residences due to its prime location in the heart of Bandung City.\n\nThere are many facilities available at The Selaras Sukajadi, including a clubhouse, pool, taekwondo club, restaurant, fitness center, and more.\n\nThis elite residential project marks the beginning of Selaras Kontraktor's efforts to develop various other residences throughout the Bandung City area.",
+    image: proj2,
+  },
+  {
+    title: "Selaras Raya Batu Aji",
+    content:
+      "Selaras Raya Batu Aji is an elite residential project located in a premium area spanning 3 hectares. It is developed by the experienced and trusted developer, Selaras Raya Group.\n\nSelaras Raya Batu Aji is built with an elegant design, organized layout, and a cluster system featuring a single entry gate.\n\nThe project is complemented by numerous garden arrangements within the area, providing a comfortable impression, clean air, and a cool atmosphere. Selaras Raya Batu Aji is situated in a strategic location close to schools, markets, hotels, and malls, making it highly convenient for your daily activities and perfect for your family.",
+    image: proj3,
+  },
+];
 
 const HomePage = () => {
   const { short } = useDocument();
@@ -22,7 +46,7 @@ const HomePage = () => {
   const { width } = useWindow();
 
   const pageid = `${short}-home`;
-  const slideshow = [img1, img2, img3, img4];
+  const slideshow = [slide1, slide2, slide3, slide4];
 
   return (
     <Fragment>
@@ -51,7 +75,7 @@ const HomePage = () => {
         </El.Container>
         <El.Container alignItems="center" flexDirection="row" flexWrap>
           <El.Section flex="1" minWidth="21.9rem">
-            <El.Img src={asideImg} style={{ width: "100%", height: "31.2rem", borderRadius: "1.2rem" }} />
+            <El.Img src={asideImg} style={{ width: "100%", height: width < 742 ? (width > 700 ? "15.6rem" : width < 566 ? "15.6rem" : "31.2rem") : "31.2rem", borderRadius: "1.2rem" }} />
           </El.Section>
           <El.Section flex="1" minWidth="21.9rem" style={{ color: "var(--color-secondary)", whiteSpace: "pre-wrap" }} gap="1.8rem">
             <H2>
@@ -63,7 +87,7 @@ const HomePage = () => {
             <Button.CTA>Learn More</Button.CTA>
           </El.Section>
         </El.Container>
-        <El.Container alignItems="flex-end" flexDirection="row" flexWrap wrapReverse>
+        <El.Container flexDirection="row" flexWrap>
           <El.Section flex="1" minWidth="21.9rem" position="sticky" top="0" left="0" style={{ color: "var(--color-secondary)", whiteSpace: "pre-wrap" }} gap="1.8rem">
             <H2>
               {`Why Choose `}
@@ -113,6 +137,13 @@ const HomePage = () => {
               <Span color="var(--color-primary)">Projects</Span>
             </H2>
             <P fontWeight="medium">Dive into our portfolio of stunning properties that set the benchmark for luxury and comfort in Bandung. Each project by Selaras Kontraktor is a testament to our dedication to superior craftsmanship and visionary design. Whether you seek a serene sanctuary or a bustling commercial hub, our developments promise to elevate your lifestyle.</P>
+          </El.Section>
+          <El.Section sWidth="100%" sHeight="100%" overflow="visible">
+            <Carousel gap={10} isArrowEnabled>
+              {projectData.map((item, i) => (
+                <Card.Project key={i} title={item.title} content={item.content} image={item.image} />
+              ))}
+            </Carousel>
           </El.Section>
           <Button.CTA>See All Projects</Button.CTA>
         </El.Container>
