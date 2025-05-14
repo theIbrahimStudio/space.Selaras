@@ -1,4 +1,3 @@
-import React from "react";
 import * as El from "../layout/el";
 
 const Searchbar = ({ id = "" }) => {

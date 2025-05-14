@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from "react";
+import { createContext, useContext } from "react";
 
 const ApiContext = createContext();
 const apiURL = import.meta.env.VITE_API_URL;

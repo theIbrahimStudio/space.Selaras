@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext } from "react";
 import * as Loading from "../../components/feedback/loading";
 
 const LoadingContext = createContext();

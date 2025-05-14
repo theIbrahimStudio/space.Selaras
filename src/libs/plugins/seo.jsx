@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import useDocument from "../uses/document";
 import { formatToISO8601, stripHtml } from "./helpers";
 

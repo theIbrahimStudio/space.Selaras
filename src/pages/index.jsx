@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import useDocument from "../libs/uses/document";
 import useGraph from "../components/content/graph";
 import useWindow from "../libs/uses/window";
@@ -17,6 +17,10 @@ import slide4 from "../assets/img/slideshow/4.jpg";
 import proj1 from "../assets/img/project/1.jpg";
 import proj2 from "../assets/img/project/2.jpg";
 import proj3 from "../assets/img/project/3.jpg";
+import news1 from "../assets/img/news/1.jpg";
+import news2 from "../assets/img/news/2.jpg";
+import news3 from "../assets/img/news/3.jpg";
+import news4 from "../assets/img/news/4.jpg";
 import asideImg from "../assets/img/2148972401.jpg";
 
 const projectData = [
@@ -37,6 +41,37 @@ const projectData = [
     content:
       "Selaras Raya Batu Aji is an elite residential project located in a premium area spanning 3 hectares. It is developed by the experienced and trusted developer, Selaras Raya Group.\n\nSelaras Raya Batu Aji is built with an elegant design, organized layout, and a cluster system featuring a single entry gate.\n\nThe project is complemented by numerous garden arrangements within the area, providing a comfortable impression, clean air, and a cool atmosphere. Selaras Raya Batu Aji is situated in a strategic location close to schools, markets, hotels, and malls, making it highly convenient for your daily activities and perfect for your family.",
     image: proj3,
+  },
+];
+
+const newsData = [
+  {
+    image: news1,
+    category: "HOT NEWS",
+    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    content: "Aenean ut lectus dui. Nullam vulputate commodo euismod. In sodales imperdiet nisl vel scelerisque. Duis venenatis fermentum lacinia.",
+    date: "July 23, 2024",
+  },
+  {
+    image: news2,
+    category: "LATEST NEWS",
+    title: "Quisque in porta dui, vel dictum odio. Phasellus ac tellus non neque pellentesque laoreet.",
+    content: "Aenean sit amet elit sit amet sem ornare blandit. Quisque in augue id ligula auctor mattis at at diam.",
+    date: "July 23, 2024",
+  },
+  {
+    image: news3,
+    category: "RECOMMENDED",
+    title: "Sed at rutrum nisl. Quisque tempus, arcu vel molestie aliquam, augue enim tempor odio, eu malesuada tortor lacus quis nisi.",
+    content: "Integer ut mollis sapien. Duis pellentesque leo pretium pretium egestas. Pellentesque a luctus mi, sit amet ornare erat.",
+    date: "July 23, 2024",
+  },
+  {
+    image: news4,
+    category: "POPULAR NEWS",
+    title: "Etiam commodo pharetra accumsan. Nunc cursus massa leo, et tempus massa feugiat eu.",
+    content: "Fusce nunc quam, posuere in ornare nec, eleifend in lectus. Donec euismod orci neque. In maximus dictum pellentesque.",
+    date: "July 23, 2024",
   },
 ];
 
@@ -62,7 +97,7 @@ const HomePage = () => {
                 ))}
               </Carousel>
             </El.Section>
-            <El.Section sWidth="100%" sHeight="100%" alignItems="center" justifyContent="center" gap="1.2rem" backgroundColor="var(--color-secondary-20)" padding="1.2rem 3.7rem 1.2rem 3.7rem">
+            <El.Section sWidth="100%" sHeight="100%" alignItems="center" justifyContent="center" gap="1.2rem" backgroundColor="var(--color-secondary-20)" padding={width < 700 ? "1.2rem 1.8rem 1.2rem 1.8rem" : "1.2rem 3.7rem 1.2rem 3.7rem"}>
               <El.Section gap="1.2rem" sWidth="100%" maxWidth="43.7rem" alignItems="center" justifyContent="center" style={{ color: "var(--color-background)", whiteSpace: "pre-wrap" }}>
                 <H1 textAlign="center">{`Building Dreams,\nOne Home at a Time.`}</H1>
                 <P textAlign="center" fontWeight="medium">
@@ -131,7 +166,7 @@ const HomePage = () => {
           </El.Section>
         </El.Container>
         <El.Container alignItems="center">
-          <El.Section flex="1" minWidth="21.9rem" style={{ color: "var(--color-secondary)", whiteSpace: "pre-wrap" }} gap="1.8rem">
+          <El.Section sWidth="100%" style={{ color: "var(--color-secondary)", whiteSpace: "pre-wrap" }} gap="1.8rem">
             <H2>
               {`Featured `}
               <Span color="var(--color-primary)">Projects</Span>
@@ -147,16 +182,32 @@ const HomePage = () => {
           </El.Section>
           <Button.CTA>See All Projects</Button.CTA>
         </El.Container>
-        <El.Container alignItems="center">
-          <El.Section flex="1" minWidth="21.9rem" style={{ color: "var(--color-secondary)", whiteSpace: "pre-wrap" }} gap="1.8rem">
+        <El.Container alignItems="center" overflow="visible">
+          <El.Section sWidth="100%" style={{ color: "var(--color-secondary)", whiteSpace: "pre-wrap" }} gap="1.8rem">
             <H2>
               <Span color="var(--color-primary)">Stay Updated</Span>
               {` with Latest News`}
             </H2>
             <P fontWeight="medium">Keep your finger on the pulse of the latest happenings in Bandung’s real estate scene. From groundbreaking ceremonies to project completions, our news section brings you all the exciting updates from Selaras Kontraktor.</P>
           </El.Section>
+          <El.Section sWidth="100%" flexDirection="row" gap="1.2rem" overflow="x">
+            {newsData.map((item, i) => (
+              <Card.News key={i} image={item.image} category={item.category} title={item.title} content={item.content} date={item.date} />
+            ))}
+          </El.Section>
           <Button.CTA>See All News</Button.CTA>
         </El.Container>
+        {/* <El.Container alignItems="center" flexDirection="row" flexWrap>
+          <El.Section flex="1" minWidth="21.9rem" style={{ color: "var(--color-secondary)", whiteSpace: "pre-wrap" }} gap="1.8rem">
+            <H2>
+              {`Crafting `}
+              <Span color="var(--color-primary)">Communities</Span>,{`\nCreating `}
+              <Span color="var(--color-primary)">Legacies</Span>.
+            </H2>
+            <P fontWeight="medium">{`Selaras Kontraktor isn't just a developer, we are dream weavers. Established in Bandung, our journey began with a vision to transform the skyline and redefine the concept of living spaces.\n\nFrom luxurious residences to modern commercial spaces, every project reflects our unwavering commitment to quality and community. Join us as we continue to build a legacy of trust, innovation, and excellence.`}</P>
+            <Button.CTA>Learn More</Button.CTA>
+          </El.Section>
+        </El.Container> */}
       </El.Page>
     </Fragment>
   );

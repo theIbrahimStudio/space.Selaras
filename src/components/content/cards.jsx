@@ -1,9 +1,10 @@
-import React from "react";
 import useWindow from "../../libs/uses/window";
 import useGraph from "./graph";
 import * as El from "../layout/el";
 import * as Button from "../input/buttons";
 import watermark from "../../assets/svg/watermark.svg";
+import prjcss from "./styles/card-project.module.css";
+import nwscss from "./styles/card-news.module.css";
 
 export const Feature = ({ id = "", icon, title = "", content = "" }) => {
   const { H3, P } = useGraph();
@@ -23,7 +24,7 @@ export const Feature = ({ id = "", icon, title = "", content = "" }) => {
   );
 };
 
-export const Project = ({ id = "", image, title, content }) => {
+export const Project = ({ id = "", image, title, content, onClick = () => {} }) => {
   const { width } = useWindow();
   const { H3, P } = useGraph();
 
@@ -43,12 +44,12 @@ export const Project = ({ id = "", image, title, content }) => {
   };
 
   return (
-    <El.Section id={compid} sWidth="100%" alignItems="center" flexDirection="row" borderRadius="1.2rem" padding="0.6rem" backgroundColor="var(--color-secondary-5)" flexWrap>
-      <El.Section flex="1" padding="0" gap="0" minWidth="21.9rem">
+    <El.Section id={compid} className={prjcss.card} sWidth="100%" alignItems="center" flexDirection="row" borderRadius="1.2rem" padding="0.6rem" flexWrap style={{ cursor: "pointer" }} onClick={onClick}>
+      <El.Section flex="1" padding="0" gap="0" minWidth="21.9rem" style={{ zIndex: "1" }}>
         <El.Img src={watermark} alt={`${title}-watermark`} style={{ opacity: "0.5", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "9.4rem", height: "auto" }} />
         <El.Img src={image} alt={title} style={{ width: "100%", height: width < 742 ? (width > 700 ? "15.6rem" : width < 566 ? "15.6rem" : "21.8rem") : "21.8rem", borderRadius: "0.6rem" }} />
       </El.Section>
-      <El.Section flex="1" padding="1.2rem" gap="1.2rem" minWidth="21.9rem" maxWidth="100%">
+      <El.Section flex="1" padding="1.2rem" gap="1.2rem" minWidth="21.9rem" maxWidth="100%" style={{ zIndex: "1" }}>
         <H3 fontWeight="bold">{title}</H3>
         <P ellipsed lineClamp={width < 742 ? (width > 700 ? "6" : width < 566 ? "6" : "8") : "8"} whiteSpace="pre-wrap" variant="tiny" fontWeight="medium">
           {content}
@@ -57,6 +58,32 @@ export const Project = ({ id = "", image, title, content }) => {
           More Details
           {arrow()}
         </Button.More>
+      </El.Section>
+    </El.Section>
+  );
+};
+
+export const News = ({ id = "", image, category, title, content, date, onClick = () => {} }) => {
+  const { H3, P } = useGraph();
+
+  const compid = `${id}-news-card`;
+
+  return (
+    <El.Section id={compid} className={nwscss.card} sWidth="100%" minWidth="21.5rem" padding="0.6rem" gap="0.6rem" borderRadius="1.2rem" onClick={onClick}>
+      <El.Img src={image} alt={title} style={{ width: "100%", height: "12.5rem", borderRadius: "0.6rem", zIndex: "1" }} />
+      <El.Section sWidth="100%" padding="0.6rem" gap="0.6rem" style={{ zIndex: "1" }}>
+        <P variant="ant" fontWeight="bold" color="var(--color-primary)">
+          {category}
+        </P>
+        <H3 fontWeight="bold" color="var(--color-secondary)" ellipsed lineClamp="2" whiteSpace="pre-wrap">
+          {title}
+        </H3>
+        <P variant="tiny" fontWeight="medium" color="var(--color-secondary)" ellipsed lineClamp="3" whiteSpace="pre-wrap">
+          {content}
+        </P>
+        <P variant="ant" fontWeight="semibold" opacity="0.5" color="var(--color-secondary)">
+          {date}
+        </P>
       </El.Section>
     </El.Section>
   );

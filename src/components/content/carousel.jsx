@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, Children, cloneElement, Fragment } from "react";
+import { useRef, useEffect, useState, Children, cloneElement, Fragment } from "react";
 import * as El from "../layout/el";
 import { pxToRem } from "../../libs/plugins/helpers";
 import styles from "./styles/slideshow.module.css";
