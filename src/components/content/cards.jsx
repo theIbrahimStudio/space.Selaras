@@ -64,12 +64,13 @@ export const Project = ({ id = "", image, title, content, onClick = () => {} }) 
 };
 
 export const News = ({ id = "", image, category, title, content, date, onClick = () => {} }) => {
+  const { width } = useWindow();
   const { H3, P } = useGraph();
 
   const compid = `${id}-news-card`;
 
   return (
-    <El.Section id={compid} className={nwscss.card} sWidth="100%" minWidth="21.5rem" padding="0.6rem" gap="0.6rem" borderRadius="1.2rem" onClick={onClick}>
+    <El.Section id={compid} className={nwscss.card} scrollSnapAlign="start" sWidth="100%" maxWidth={width < 1121 ? (width > 700 ? "calc(50% - 0.6rem)" : "100%") : "calc(33.333% - 0.8rem)"} minWidth={width < 1121 ? (width > 700 ? "calc(50% - 0.6rem)" : "100%") : "calc(33.333% - 0.8rem)"} padding="0.6rem" gap="0.6rem" borderRadius="1.2rem" onClick={onClick}>
       <El.Img src={image} alt={title} style={{ width: "100%", height: "12.5rem", borderRadius: "0.6rem", zIndex: "1" }} />
       <El.Section sWidth="100%" padding="0.6rem" gap="0.6rem" style={{ zIndex: "1" }}>
         <P variant="ant" fontWeight="bold" color="var(--color-primary)">

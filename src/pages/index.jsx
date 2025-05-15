@@ -1,9 +1,11 @@
 import { Fragment } from "react";
+import { Input } from "@ibrahimstudio/input/dist/index.js";
 import useDocument from "../libs/uses/document";
 import useGraph from "../components/content/graph";
 import useWindow from "../libs/uses/window";
 import SEO from "../libs/plugins/seo";
 import Navbar from "../components/navigation/navbar";
+import Footer from "../components/navigation/footer";
 import Searchbar from "../components/navigation/searchbar";
 import Carousel from "../components/content/carousel";
 import * as El from "../components/layout/el";
@@ -88,7 +90,7 @@ const HomePage = () => {
       <SEO title="Home" route="/" />
       <El.Page pageid={pageid}>
         <Navbar />
-        <El.Container cHeight="100vh" padding={width > 1200 ? "6.2rem 5.6rem 1.2rem 5.6rem" : width < 700 ? "6.2rem 1.8rem 1.2rem 1.8rem" : "6.2rem 3.7rem 1.2rem 3.7rem"}>
+        <El.Container id="hero" cHeight="100vh" padding={width > 1200 ? "6.2rem 5.6rem 1.2rem 5.6rem" : width < 700 ? "6.2rem 1.8rem 1.2rem 1.8rem" : "6.2rem 3.7rem 1.2rem 3.7rem"}>
           <El.Section sWidth="100%" sHeight="100%" borderRadius="1.2rem">
             <El.Section sWidth="100%" sHeight="100%" position="absolute" top="0" left="0">
               <Carousel delay={5000} isAutoPlay isDotEnabled>
@@ -108,7 +110,7 @@ const HomePage = () => {
             </El.Section>
           </El.Section>
         </El.Container>
-        <El.Container alignItems="center" flexDirection="row" flexWrap>
+        <El.Container id="about" alignItems="center" flexDirection="row" flexWrap>
           <El.Section flex="1" minWidth="21.9rem">
             <El.Img src={asideImg} style={{ width: "100%", height: width < 742 ? (width > 700 ? "15.6rem" : width < 566 ? "15.6rem" : "31.2rem") : "31.2rem", borderRadius: "1.2rem" }} />
           </El.Section>
@@ -122,7 +124,7 @@ const HomePage = () => {
             <Button.CTA>Learn More</Button.CTA>
           </El.Section>
         </El.Container>
-        <El.Container flexDirection="row" flexWrap>
+        <El.Container id="features" flexDirection="row" flexWrap>
           <El.Section flex="1" minWidth="21.9rem" position="sticky" top="0" left="0" style={{ color: "var(--color-secondary)", whiteSpace: "pre-wrap" }} gap="1.8rem">
             <H2>
               {`Why Choose `}
@@ -165,7 +167,7 @@ const HomePage = () => {
             </El.Grid>
           </El.Section>
         </El.Container>
-        <El.Container alignItems="center">
+        <El.Container id="projets" alignItems="center">
           <El.Section sWidth="100%" style={{ color: "var(--color-secondary)", whiteSpace: "pre-wrap" }} gap="1.8rem">
             <H2>
               {`Featured `}
@@ -182,7 +184,7 @@ const HomePage = () => {
           </El.Section>
           <Button.CTA>See All Projects</Button.CTA>
         </El.Container>
-        <El.Container alignItems="center" overflow="visible">
+        <El.Container id="news" alignItems="center" overflow="visible">
           <El.Section sWidth="100%" style={{ color: "var(--color-secondary)", whiteSpace: "pre-wrap" }} gap="1.8rem">
             <H2>
               <Span color="var(--color-primary)">Stay Updated</Span>
@@ -190,24 +192,35 @@ const HomePage = () => {
             </H2>
             <P fontWeight="medium">Keep your finger on the pulse of the latest happenings in Bandung’s real estate scene. From groundbreaking ceremonies to project completions, our news section brings you all the exciting updates from Selaras Kontraktor.</P>
           </El.Section>
-          <El.Section sWidth="100%" flexDirection="row" gap="1.2rem" overflow="x">
+          <El.Section sWidth="100%" flexDirection="row" gap="1.2rem" overflow="x" scrollSnapType="x mandatory">
             {newsData.map((item, i) => (
               <Card.News key={i} image={item.image} category={item.category} title={item.title} content={item.content} date={item.date} />
             ))}
           </El.Section>
           <Button.CTA>See All News</Button.CTA>
         </El.Container>
-        {/* <El.Container alignItems="center" flexDirection="row" flexWrap>
+        <El.Container id="contact" alignItems="center" flexDirection="row" flexWrap>
           <El.Section flex="1" minWidth="21.9rem" style={{ color: "var(--color-secondary)", whiteSpace: "pre-wrap" }} gap="1.8rem">
             <H2>
-              {`Crafting `}
-              <Span color="var(--color-primary)">Communities</Span>,{`\nCreating `}
-              <Span color="var(--color-primary)">Legacies</Span>.
+              {`Contact `}
+              <Span color="var(--color-primary)">Us</Span>
             </H2>
-            <P fontWeight="medium">{`Selaras Kontraktor isn't just a developer, we are dream weavers. Established in Bandung, our journey began with a vision to transform the skyline and redefine the concept of living spaces.\n\nFrom luxurious residences to modern commercial spaces, every project reflects our unwavering commitment to quality and community. Join us as we continue to build a legacy of trust, innovation, and excellence.`}</P>
-            <Button.CTA>Learn More</Button.CTA>
+            <P fontWeight="medium">{`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut lectus dui. Nullam vulputate commodo euismod. In sodales imperdiet nisl vel scelerisque. Duis venenatis fermentum lacinia.`}</P>
           </El.Section>
-        </El.Container> */}
+          <El.Section flex="1" minWidth="21.9rem" alignItems="flex-end" padding="1.2rem" gap="1.2rem" borderRadius="2.5rem" border="0.0625rem solid var(--color-primary-20)">
+            <El.Section sWidth="100%" flexDirection="row" gap="1.2rem" flexWrap>
+              <Input radius="full" label="First Name" type="text" placeholder="John" required />
+              <Input radius="full" label="Last Name" type="text" placeholder="Doe" required />
+            </El.Section>
+            <El.Section sWidth="100%" flexDirection="row" gap="1.2rem" flexWrap>
+              <Input radius="full" label="Phone Number" type="tel" placeholder="0881xxxx" required />
+              <Input radius="full" label="Email Address" type="email" placeholder="johndoe@mail.com" required />
+            </El.Section>
+            <Input radius="full" label="Message" type="text" placeholder="Your message here ..." required />
+            <Button.CTA>Send Message</Button.CTA>
+          </El.Section>
+        </El.Container>
+        <Footer />
       </El.Page>
     </Fragment>
   );

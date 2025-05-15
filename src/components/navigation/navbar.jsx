@@ -1,7 +1,7 @@
 import { Fragment, useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import useWindow from "../../libs/uses/window";
-import logo from "../../assets/png/selaras.png";
+import logo from "../../assets/svg/selaras.svg";
 import * as El from "../layout/el";
 import * as Button from "../input/buttons";
 import * as Icon from "../content/icons";

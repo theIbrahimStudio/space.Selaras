@@ -234,6 +234,8 @@ export const Section = ({
   alignItems = "flex-start",
   justifyContent = "flex-start",
   overflow = "hidden",
+  scrollSnapType = "unset",
+  scrollSnapAlign = "unset",
   position = "relative",
   top = "unset",
   bottom = "unset",
@@ -308,6 +310,8 @@ export const Section = ({
     border: border ? border : undefined,
     borderRadius,
     backgroundColor: hasGlassMorph ? "var(--color-background-85)" : backgroundColor,
+    scrollSnapType,
+    scrollSnapAlign,
     ...overflowstyles,
   };
 
